@@ -1,2 +1,2 @@
 # PROJECT_HOLLING_II_nD
-Holling Type II feeding dynanics of a consumers on multiple resources
+Holling Type II feeding dynanics of a consumer on multiple resources
