@@ -44,21 +44,13 @@ int M_O_D_E_L___M_E( Parameter_Table * Table )
   Labels_for_Marginal_Probabilities( Table ); 
 
   /* BEGIN : Stationary Probability Distribution (only available for some of the models) -*/
-  #ifdef DIFFUSION_BD_2D
-    Stationary_Probability_Distribution( Table );
-    printf(" Theoretical Stationary Probability Distribution has been calculated.\n");
-  #elif defined DIFFUSION_HII_1D  
-    Stationary_Probability_Distribution( Table );
-    printf(" Theoretical Stationary Probability Distribution has been calculated.\n");
-  #elif defined DIFFUSION_HII_nD
     Stationary_Probability_Distribution( Table );
     printf(" Theoretical Stationary Probability Distribution has been calculated.\n");
     /* Only exact when all Nu's are the same!!! */
     assert_HLL_nD_Equal_Nus( Table );
     Evolving_Probability_Distribution( Table );
     printf(" Theoretical Time Evolving Probability Distribution has been calculated.\n");
-  #endif
-  Print_Press_Key(0, 1, ".");
+    Print_Press_Key(0, 1, ".");
   /*  END : ------------------------------------------------------------------------------*/
 
   /***********************************************************************************************/
@@ -80,18 +72,11 @@ int M_O_D_E_L___M_E( Parameter_Table * Table )
   
   for ( i=0; i < Table->MEq->n_DIMENSION; i++ ) {
 
-  #ifdef DIFFUSION_BD_2D
     C_P_G___S_T_A_T_I_O_N_A_R_Y___D_I_S_T_R_I_B_U_T_I_O_N ( Table, i,  SAME_PLOT );
-  #elif defined DIFFUSION_HII_1D  
-    C_P_G___S_T_A_T_I_O_N_A_R_Y___D_I_S_T_R_I_B_U_T_I_O_N ( Table, i,  SAME_PLOT );
-  #elif defined DIFFUSION_HII_nD  
-    C_P_G___S_T_A_T_I_O_N_A_R_Y___D_I_S_T_R_I_B_U_T_I_O_N ( Table, i,  SAME_PLOT );
-  #endif
+    
     Print_Press_Key(1,0,".");
     for(j=1; j<Table->T->I_Time; j++) {
-      C_P_G___E_M_P_I_R_I_C_A_L___D_I_S_T_R_I_B_U_T_I_O_N ( Table, j, i,
-  							                                            Table->T->Time_Vector[j],
-  							                                            SAME_PLOT );
+      C_P_G___E_M_P_I_R_I_C_A_L___D_I_S_T_R_I_B_U_T_I_O_N ( Table, j, i, Table->T->Time_Vector[j], SAME_PLOT );
       Print_Press_Key(1, 1,".");
     }
   }

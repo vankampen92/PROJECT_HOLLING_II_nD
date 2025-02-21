@@ -12,10 +12,10 @@
 # . ~$ export CPGPLOT=${HOME}/CPGPLOT/
 #
 # Alternatively, you can also define these environmental variables here in
-# the make file:
+# the make file
 CPGPLOT=${HOME}/CPGPLOT/
-PROJECT_DIR=${HOME}/PROJECT_HOLLING_II_nDIMENSIONAL/
-INCLUDE_DIR=${HOME}/PROJECT_HOLLING_II_nDIMENSIONAL/Include/
+PROJECT_DIR=${HOME}/PROJECT_HOLLING_II_nD/
+INCLUDE_DIR=${HOME}/PROJECT_HOLLING_II_nD/Include/
 TIME_TREND_DIR=${PROJECT_DIR}Definition_Time_Trend_Dependence/
 IO_DIR=${PROJECT_DIR}Library/IO_Library/
 OPT_DIR= ${PROJECT_DIR}Library/Optimization_Library/

@@ -151,7 +151,8 @@ int main(int argc, char **argv)
   }
 
 #if defined CPGPLOT_REPRESENTATION
-  Table.CPG     = A_C_T_I_V_A_T_E___C_P_G_P_L_O_T ( SUB_OUTPUT_VARIABLES, I_Time, 0, CPG_DRIVER_NAME);
+  //Table.CPG     = A_C_T_I_V_A_T_E___C_P_G_P_L_O_T ( SUB_OUTPUT_VARIABLES, I_Time, 0, CPG_DRIVER_NAME);
+  Table.CPG     = A_C_T_I_V_A_T_E___C_P_G_P_L_O_T ( SUB_OUTPUT_VARIABLES, I_Time, 0, "/XSERVE");
   Table.CPG_STO = A_C_T_I_V_A_T_E___2nd___C_P_G_P_L_O_T ( 1, SUB_OUTPUT_VARIABLES, I_Time, 0, CPG_DRIVER_NAME );
 #endif
   
@@ -195,17 +196,11 @@ int main(int argc, char **argv)
 
   /* Stochastic Master Equation Time Evolution */
   Parameter_Values_into_Parameter_Table(&Table);   /* This is to make sure the same
-						                                          parameter set as defined through
-						                                          either the command line or the 
-						                                          default files is used!!! 
-						                                       */
-#ifdef DIFFUSION_BD_2D
-  M_O_D_E_L___M_E( &Table );
-#elif defined DIFFUSION_HII_1D  
-  M_O_D_E_L___M_E( &Table );
-#elif defined DIFFUSION_HII_nD  
+						      parameter set as defined through
+						      either the command line or the 
+						      default files is used!!! 
+						    */
   M_O_D_E_L___M_E( &Table ); 
-#endif
   
   /* BEGIN : -------------------------------------------------------------------------
    */
