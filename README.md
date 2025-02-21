@@ -86,9 +86,6 @@ both in you home directory.
   </a>
 </div>
 
-[![Watch the video](MODEL_CALCULATIONS/TEMPORAL_EVOLUTION_MASTER_EQUATION/MOVIE_1/005.png)](https://youtu.be/aEXZSK0kUio)
-
-
 ### Contribution guidelines ###
 
 * Writing tests
