@@ -8,7 +8,10 @@
 gsl_rng * r; /* Global generator defined in main.c */
 
 /* This code calculates the temporal evolution of the master equation corresponding to 
-   a resource-consumer model with S resources and HOLLING TYPE II dynamics.  
+   a resource-consumer model with S resources and HOLLING TYPE II dynamics. 
+   In addition, the numerical integration of the corresponding ODE system for the 
+   averages is calculated, and a number of stochastic realizations (see arg -tR 1000)
+   are also calculated.    
 
    Compilation (see first makefile variable MODEL to specify a given model to compile):
 
