@@ -80,7 +80,7 @@ both in you home directory.
 
 	A graphical output representing the temporal evolution of the marginals from the whole probability distribution temporal evolution calculated by both numberically integrating the master equation and through the analytic results reported in the paper is given here (here -HS 4, this, 4 resource types):
 <video width="640" height="360" controls>
-  <source src="S4.avi" type="video/avi">
+  <source src="./MODEL_CALCULATIONS/TEMPORAL_EVOLUTION_MASTER_EQUATION/MOVIE_1/S4.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
