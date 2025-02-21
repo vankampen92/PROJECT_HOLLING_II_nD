@@ -81,7 +81,7 @@ both in you home directory.
 	A graphical output (click on the image to see an animated version) representing the temporal evolution of the marginals from the temporal evolutin of the whole probability distribution calculated by both numberically integrating the master equation and through the analytic result (a time-dependent multinomial as reported in the companion paper) is given here for 4 resource types (input arguments as before but -HS 4 -n4 -G0 2 -G1 2 -t1 3.0):
 
 <div align="center">
-  <a href="https://youtu.be/aEXZSK0kUio">
+  <a href="https://youtu.be/akYI52B8RmE">
     <img src="MODEL_CALCULATIONS/TEMPORAL_EVOLUTION_MASTER_EQUATION/MOVIE_1/005.png" alt="Watch the video" />
   </a>
 </div>
