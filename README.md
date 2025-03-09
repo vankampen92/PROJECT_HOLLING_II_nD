@@ -96,7 +96,11 @@ The manuscript can be found in the arXiv file: [https://arxiv.org/abs/2401.01632
 
 ## Code/software
 
-Several R scripts are included and can be used to reproduce the results in the manuscript.
+Several R scripts are included in the directory:
+
+* -$ ./PROJECT_HOLLING_II_nD/RCode
+
+They can be used to reproduce the results in the manuscript.
 
 #### File: SSA-realization.R
 
