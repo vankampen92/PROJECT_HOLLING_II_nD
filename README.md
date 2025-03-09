@@ -14,7 +14,7 @@ You can git clone the CPGPLOT library from my repository.
 
 ### What is this repository for? ###
 
-* This repository models the feeding dynamics of a population of consumers when attacking and handling multiple resource species. The model can consider the dynamics distributed across a metatapopulation network structure. Individual movement of consumers is implemented as a random walk betweeen connected patches (Markov jump process). However, this code accompanies a submitted paper where consumer movement is not in use. The dynamics is set up both as an ODE system and as Markov jump processes in continuous time. The temporal dynamics of the whole probability distribution over configurational states can also be numerically integrated via the Master Equation formalism. Several methods that optimize the generation of stochastic realizations of the system of Gillesipie type have been implemented. Several analytical results on the temporal evolution of the probability distribution and its stationary analytical solution are tested.  
+* This repository models the feeding dynamics of a population of consumers when attacking and handling multiple resource species. The model can consider the dynamics distributed across a metatapopulation network structure. Individual movement of consumers is implemented as a random walk betweeen connected patches (Markov jump process). However, this code accompanies a submitted paper (by Capitan and Alonso) where consumer movement is not in use. A preprint of the manuscript can be found in the arXiv file: [https://arxiv.org/abs/2401.01632](https://arxiv.org/abs/2401.01632). The dynamics is set up both as an ODE system and as Markov jump processes in continuous time. The temporal dynamics of the whole probability distribution over configurational states can also be numerically integrated via the Master Equation formalism. Several methods that optimize the generation of stochastic realizations of the system of Gillesipie type have been implemented. Several analytical results on the temporal evolution of the probability distribution and its stationary analytical solution are tested. Here you will find also is R code (by J. A. Capitan) to generate the figures of the associated paper, as decribed, at the end of this file.  
 
 * Version: 0.0.0.999
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
@@ -74,17 +74,82 @@ both in you home directory.
                           -HK 10000 -H0 5.0 -H2 1.0 -H9 0.5 -H10 0.1 \
                           -Hp1 0.3725 -Hp2 1.0 -HN 20
 
-	The code depends on some auxiliary libraries in ./Library  and ./Definition_Error_Model subdirectories. You may notice that you need to generate these libraries before, and then execute the command 'make MODEL=DIFFUSION'. In principle, a recursive makefile does this job for you. However, if gcc does not find these libraries, they may have been accidentally deleted and you should build them back up again from sources. Also, the code is linked against R libraries.  You may remove these R links or install R in your system. I recommend this 2n option. This will allow you to create shared libraries that, then, can be called as standard R funcions from RStudio, for example.
+	The code depends on some auxiliary libraries in ./Library  and ./Definition_Error_Model subdirectories. You may notice that you need to generate these libraries before, and then execute the command 'make MODEL=DIFFUSION_HII_nD'. In principle, a recursive makefile does this job for you. However, if gcc does not find these libraries, they may have been accidentally deleted and you should build them back up again from sources. Also, the code is linked against R libraries.  You may remove these R links or install R in your system. I recommend this 2n option. This will allow you to create shared libraries that, then, can be called as standard R funcions from RStudio, for example.
 
-	The call on the 2nd line above generates a bunch of stochatic realizations (-tR 10000) and presents the temporal evolution of 5 output variables that represent the number of consumers that are handling each of the resource item types (-n 5), on a central and single cell (-HM 1) for 25 times (-tn 25) between 0 and 2.5 (-t0 0.0 -t1 2.5). This is done also through the numerical integration of the associated ODE system for the averages, and also through the use of the temporal evolution of whole probability distribution via numerical integration of the master equation. In this regard, several analytical results are tested (see companion paper). Here the grid is reduced to a single cell (1 x 1 grid, -HX 1 -HY 1). Populations thrive within this 1 cell (-HM 1). However, several networks can be implemented. The type of network in controled by the -y2 imput argument value. For instance, if -y2 1, a regular squared grid with Von Neumann neighboruhoods and periodic boundary conditions is used. In this example, this feature is not used.
+	The call on the 2nd line above generates a bunch of stochatic realizations (-tR 10000) and presents the temporal evolution of 5 output variables that represent the number of consumers that are handling each of the resource item types (-n 5), on a central and single cell (-HM 1) for 25 times (-tn 25) between 0 and 2.5 (-t0 0.0 -t1 2.5). This is done also through the numerical integration of the associated ODE system for the averages, and also through the use of the temporal evolution of whole probability distribution via numerical integration of the master equation. In this regard, several analytical results are tested (see companion paper). Here the grid is reduced to a single cell (1 x 1 grid, -HX 1 -HY 1). Populations thrive within this 1 cell (-HM 1). However, several networks can be implemented. The type of network is controled by the -y2 imput argument value. For instance, if -y2 1, a regular squared grid with Von Neumann neighboruhoods and periodic boundary conditions is used. In this example, this feature is not used.
 
-	A graphical output (click on the image to see an animated version) representing the temporal evolution of the marginals from the temporal evolutin of the whole probability distribution calculated by both numberically integrating the master equation and through the analytic result (a time-dependent multinomial as reported in the companion paper) is given here for 4 resource types (input arguments as before but -HS 4 -n4 -G0 2 -G1 2 -t1 3.0):
+	A graphical output (click on the image to see an animated version) representing the temporal evolution of the marginals from the temporal evolution of the whole probability distribution calculated by both numerically integrating the master equation and through the analytic result (a time-dependent multinomial as reported in the companion paper) is given here for 4 resource types (input arguments as before but -HS 4 -n4 -G0 2 -G1 2 -t1 3.0, yellow, analytic solution, magenta, numerical integration. The actual values of the discrete propbability distributions are represented in circles (broken lines between circles are only a guide to the eye). 
 
 <div align="center">
   <a href="https://youtu.be/akYI52B8RmE">
     <img src="MODEL_CALCULATIONS/TEMPORAL_EVOLUTION_MASTER_EQUATION/MOVIE_1/005.png" alt="Watch the video" />
   </a>
 </div>
+
+### R code ###
+
+# Code from: Out-of-equlibrium inference of feeding rates through population data from generic consumer-resource stochastic dynamics
+
+This code contains the R functions needed for the analyses presented in the paper 'Out-of-equlibrium inference of feeding rates through population data from generic consumer-resource stochastic dynamics'.
+
+The manuscript can be found in the arXiv file: [https://arxiv.org/abs/2401.01632](https://arxiv.org/abs/2401.01632) 
+
+## Code/software
+
+Several R scripts are included and can be used to reproduce the results in the manuscript.
+
+#### File: SSA-realization.R
+
+**Description:** This file uses the library *GillespieSSA* to generate model realizations of the multi-resource model described in the manuscript. The temporal dynamics of free predators is plotted. Initially there are 100 free consumers (red time series) and none of them handling any prey (remaining series).
+
+![](stochastic_real.png "Stochastic realization for S=5 resources")
+
+#### File: Heatmaps.R
+
+**Description:** Given a single realization of the stochastic process, this file computes negative log-likelihood and plots a heatmap of this variable when parameters (attack and relaxation rates) are screened. If *flag=0*, sampling times are drawn uniformly on [0,10T], being T the characteristic time of the dynamics.  If *flag=1*, sampling times are drawn uniformly on [10T,20T], being T the characteristic time of the dynamics.
+
+![](heatmap.png "Heatmap for log-likelihood for flag = 0")
+
+This file generates manuscript's Figure 2.
+
+#### File: ML-estimation.R
+
+**Description:** This file estimates parameters from a matrix gathering several realizations of the stochastic process ending at different times. A number of estimates is obtained (by collecting repeated realizations) to determine the distribution of each parameter value. 
+
+![](ML-estimation.png "Maximum-likelihood estimation for parameters")
+
+This file generates manuscript's Figure 3.
+
+#### File: IC-log-likelihood.R
+
+**Description:** This script computes log-likelihood profiles, which are then used to estimate confidence intervals for parameter estimates.
+
+![](IC-logL.png "Confidence intervals based on likelihood profiles")
+
+This file generates manuscript's Figure 4.
+
+#### File: Heatmaps.marginals.R
+
+**Description:** As in *Heatmaps.R*, given a single realization of the stochastic process (accounting only for the number of free predators), this file computes negative log-likelihood and plots a heatmap of this variable when parameters (attack and relaxation rates) are screened. If *flag=0*, sampling times are drawn uniformly on [0, 10T], being T the characteristic time of the dynamics.  If *flag=1*, sampling times are drawn uniformly on [10T, 20T], being T the characteristic time of the dynamics.
+
+This file generates manuscript's Figure 5.
+
+#### File: ML-estimation-marginals.R
+
+**Description:** Instead of collecting all the information from the process (tracking abundances over time for every behavioral type), this file considers only the number of free predators. Independent observations of this abundance at different times allows to estimate parameters, as in *ML-estimation.R*. 
+
+This file generates manuscript's Figure 6.
+
+#### File: ML-estimation-deterministic.R
+
+**Description:** Here an alternative to maximum-likelihood is implemented, based on the exact solution in the deterministic limit. 
+
+This file generates manuscript's Figure D1.
+
+#### File: mytheme_ggplot.R
+
+**Description:** This script contains some specifications for figure appearance.
+
 
 ### Contribution guidelines ###
 
@@ -94,4 +159,4 @@ both in you home directory.
 
 ### Who do I talk to? ###
 code
-* Drop an email to David Alonso (<dalonso@ceab.csic.es>)
+* Drop an email to David Alonso (<dalonso@ceab.csic.es>) or Jose A. Capitan (<ja.capitan@upm.es>)
