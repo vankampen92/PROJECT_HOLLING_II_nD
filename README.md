@@ -14,7 +14,7 @@ You can git clone the CPGPLOT library from my repository.
 
 ### What is this repository for? ###
 
-* This repository models the feeding dynamics of a population of consumers when attacking and handling multiple resource species. The model can consider the dynamics distributed across a metatapopulation network structure. Individual movement of consumers is implemented as a random walk betweeen connected patches (Markov jump process). However, this code accompanies a submitted paper (by Capitan and Alonso) where consumer movement is not in use. A preprint of the manuscript can be found in the arXiv file: [https://arxiv.org/abs/2401.01632](https://arxiv.org/abs/2401.01632). The dynamics is set up both as an ODE system and as Markov jump processes in continuous time. The temporal dynamics of the whole probability distribution over configurational states can also be numerically integrated via the Master Equation formalism. Several methods that optimize the generation of stochastic realizations of the system of Gillesipie type have been implemented. Several analytical results on the temporal evolution of the probability distribution and its stationary analytical solution are tested. Here you will find also is R code (by J. A. Capitan) to generate the figures of the associated paper, as decribed, at the end of this file.  
+* This repository models the feeding dynamics of a population of consumers when attacking and handling multiple resource species. The model can consider the dynamics distributed across a metatapopulation network structure. Individual movement of consumers is implemented as a random walk betweeen connected patches (Markov jump process). However, this code accompanies a submitted paper (by Capitan and Alonso) where consumer movement is not in use. A preprint of the manuscript can be found in the arXiv file: [https://arxiv.org/abs/2401.01632](https://arxiv.org/abs/2401.01632). The dynamics is set up both as an ODE system and as Markov jump processes in continuous time. The temporal dynamics of the whole probability distribution over configurational states can also be numerically integrated via the Master Equation formalism. Several methods that optimize the generation of stochastic realizations of the system of Gillesipie type have been implemented. Several analytical results on the temporal evolution of the probability distribution and its stationary analytical solution are tested. Here you will also find also the R code to generate the figures of the associated paper, as decribed, at the end of this file. Most results in the associdated manuscript have been double checked using the R (J. A. Capitann) and C (D. Alonso) code in this repository. 
 
 * Version: 0.0.0.999
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
@@ -86,9 +86,9 @@ both in you home directory.
   </a>
 </div>
 
-### R code ###
+# R code #
 
-# Code from: Out-of-equlibrium inference of feeding rates through population data from generic consumer-resource stochastic dynamics
+## Code from: Out-of-equlibrium inference of feeding rates through population data from generic consumer-resource stochastic dynamics
 
 This code contains the R functions needed for the analyses presented in the paper 'Out-of-equlibrium inference of feeding rates through population data from generic consumer-resource stochastic dynamics'.
 
