@@ -12,7 +12,7 @@
 # :~$ ffmpeg -framerate 25 -i %03d.png output.avi
 
 # You can also convert the 'avi' file into 'mp4'
-# >~$ ffmpeg -i output.avi -c:v copy -c:a copy output.mp4
+# :~$ ffmpeg -i output.avi -c:v copy -c:a copy output.mp4
 
 # declare the arrays for the files and the sorting
 declare -A files
